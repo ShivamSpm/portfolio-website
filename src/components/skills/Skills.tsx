@@ -4,6 +4,7 @@ import { getStory } from "@/content/stories";
 import { Container } from "@/components/ui/Container";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { StoryLink } from "@/components/ui/StoryLink";
+import { Reveal } from "@/components/motion/Reveal";
 
 // Grouped skills; each links to the stories where it was used instead of a logo wall.
 export function Skills({ index }: { index: number }) {
@@ -13,8 +14,8 @@ export function Skills({ index }: { index: number }) {
       <Container>
         <SectionHeader index={index} id={id} title={title} />
         <div className="grid gap-x-10 gap-y-14 md:grid-cols-2 lg:grid-cols-3">
-          {skillGroups.map((group) => (
-            <div key={group.title}>
+          {skillGroups.map((group, i) => (
+            <Reveal key={group.title} delay={(i % 3) * 0.08}>
               <h3 className="label-mono border-b border-line pb-3 text-muted">{group.title}</h3>
               <ul>
                 {group.skills.map((skill) => (
@@ -39,7 +40,7 @@ export function Skills({ index }: { index: number }) {
                   </li>
                 ))}
               </ul>
-            </div>
+            </Reveal>
           ))}
         </div>
       </Container>

@@ -6,11 +6,12 @@ import type { StorySlug } from "@/content/types";
 import { Container } from "@/components/ui/Container";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { StoryLink } from "@/components/ui/StoryLink";
+import { Reveal } from "@/components/motion/Reveal";
 
 // One row of the timeline: mono date column, then a hairline rail with a marker.
 function Row({ dates, children }: { dates?: string; children: React.ReactNode }) {
   return (
-    <li className="grid gap-2 md:grid-cols-[200px_1fr] md:gap-10">
+    <Reveal as="li" className="grid gap-2 md:grid-cols-[200px_1fr] md:gap-10">
       <p className="label-mono pt-1.5 text-muted">{dates}</p>
       <div className="relative border-l border-line pb-12 pl-6 md:pl-8">
         <span
@@ -19,7 +20,7 @@ function Row({ dates, children }: { dates?: string; children: React.ReactNode })
         />
         {children}
       </div>
-    </li>
+    </Reveal>
   );
 }
 

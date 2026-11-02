@@ -5,6 +5,7 @@ import { Badge, Chip } from "@/components/ui/Badge";
 import { Container } from "@/components/ui/Container";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { StoryLink } from "@/components/ui/StoryLink";
+import { Reveal } from "@/components/motion/Reveal";
 
 const MAX_STACK = 5;
 const THUMB_NODES = 4;
@@ -50,13 +51,14 @@ export function ProjectGrid({ index }: { index: number }) {
       <Container>
         <SectionHeader index={index} id={id} title={title} />
         <ul className="grid gap-5 md:grid-cols-2">
-          {projectStories.map((story) => {
+          {projectStories.map((story, i) => {
             const extra = story.stack.length - MAX_STACK;
             return (
-              <li key={story.slug}>
+              <Reveal as="li" key={story.slug} delay={(i % 2) * 0.08}>
+                {/* Hover: the card lifts 3px. */}
                 <StoryLink
                   slug={story.slug}
-                  className="flex h-full flex-col rounded-[14px] border border-line bg-surface p-5 transition-colors hover:border-muted sm:p-6"
+                  className="flex h-full flex-col rounded-[14px] border border-line bg-surface p-5 transition-[translate,border-color] duration-300 ease-editorial hover:border-muted focus-visible:border-muted sm:p-6 motion-safe:hover:-translate-y-[3px] motion-safe:focus-visible:-translate-y-[3px]"
                 >
                   <Thumbnail story={story} />
                   {story.badges && (
@@ -79,7 +81,7 @@ export function ProjectGrid({ index }: { index: number }) {
                     {extra > 0 && <Chip>+{extra}</Chip>}
                   </span>
                 </StoryLink>
-              </li>
+              </Reveal>
             );
           })}
         </ul>
