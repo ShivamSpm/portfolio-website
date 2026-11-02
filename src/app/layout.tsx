@@ -33,7 +33,9 @@ export const metadata: Metadata = {
   description: `${site.name}, ${site.role.toLowerCase()}.`,
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+// `modal` is the @modal slot: a story opened from Home renders there as a pop-up
+// (intercepted route) while Home stays underneath.
+export default function RootLayout({ children, modal }: LayoutProps<"/">) {
   return (
     // suppressHydrationWarning: next-themes sets the theme class on <html> before hydration.
     <html
@@ -51,6 +53,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           </a>
           <Nav />
           <main id="main">{children}</main>
+          {modal}
         </Providers>
         <Analytics />
       </body>
