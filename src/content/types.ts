@@ -92,6 +92,8 @@ export interface WaterfallDiagramSpec {
   before: { label: string; bars: string[] };
   after: { label: string; bars: string[] };
   caption: string;
+  /** Screen-reader summary of the whole diagram; the step text carries the rest. */
+  alt: string;
 }
 
 export interface LossDiagramSpec {

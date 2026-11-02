@@ -183,6 +183,7 @@ export const stories: Story[] = [
       before: { label: "Before", bars: ["query 1", "query 2", "query 3"] },
       after: { label: "After", bars: ["query 1", "query 2", "query 3"] },
       caption: "Bar lengths are illustrative; the 80% drop is the real result.",
+      alt: "Request timeline. Before: query 1, query 2 and query 3 run one after another. After: the same three queries run in parallel.",
     },
     steps: [
       {
