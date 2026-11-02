@@ -238,6 +238,7 @@ export const stories: Story[] = [
       after: {
         stages: ["C# application", "Structured production logging", "AWS CloudWatch", "Datadog"],
       },
+      alt: "Before: error messages flow from the C# application toward the logs, and about 1 in 10 is lost on the way. After: C# application, structured production logging, AWS CloudWatch, Datadog, with nothing lost.",
     },
     steps: [
       {
@@ -319,6 +320,7 @@ export const stories: Story[] = [
           ],
         },
       ],
+      alt: "A spec-driven loop: spec and input data, plan with Codex, ask questions first, implement, review important code myself, second review with Claude, check against acceptance criteria, and back to the spec when something is missing. Two side panels show the OpenArt and Dify challenge flows.",
     },
     steps: [
       {

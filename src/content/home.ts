@@ -124,6 +124,7 @@ export const storyUi = {
   chaptersLabel: "Chapters",
   stepsLabel: "Story steps",
   diagramStepLabel: "Current step",
+  diagramShownLabel: "Shown",
   close: "Close story",
   previous: "Previous",
   next: "Next",
