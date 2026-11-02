@@ -4,21 +4,24 @@ import * as m from "motion/react-m";
 import { storyUi } from "@/content/home";
 import type { Story, StoryStep, StepHighlight } from "@/content/types";
 import { Chip } from "@/components/ui/Badge";
+import { CountUp } from "@/components/impact/CountUp";
 import { ease, instant } from "@/lib/motion";
 import { useReducedMotion } from "@/lib/useReducedMotion";
 
 const pad = (n: number) => String(n).padStart(2, "0");
 
 function Highlight({ h }: { h: StepHighlight }) {
+  const reduced = useReducedMotion();
   switch (h.type) {
     case "metrics":
       return (
         <div className="flex flex-wrap gap-x-10 gap-y-4">
           {h.items.map((item) => (
             <div key={item.label}>
-              <p className="font-display text-[clamp(44px,5vw,64px)] leading-none tracking-[-0.03em] text-accent">
-                {item.value}
-              </p>
+              <CountUp
+                value={item.value}
+                className="block font-display text-[clamp(44px,5vw,64px)] leading-none tracking-[-0.03em] text-accent tabular-nums"
+              />
               <p className="label-mono mt-2 text-muted">{item.label}</p>
             </div>
           ))}
@@ -45,9 +48,11 @@ function Highlight({ h }: { h: StepHighlight }) {
         <div>
           <p className="label-mono text-muted">{h.label}</p>
           <div className="mt-3 h-2 overflow-hidden rounded-full bg-surface-2">
-            <div
+            <m.div
               className="h-full origin-left bg-accent"
-              style={{ transform: `scaleX(${h.to / 100})` }}
+              initial={{ scaleX: h.from / 100 }}
+              animate={{ scaleX: h.to / 100 }}
+              transition={reduced ? instant : { duration: 1.2, ease, delay: 0.3 }}
             />
           </div>
           <p className="mt-2 font-mono text-[13px] text-muted">
@@ -83,12 +88,8 @@ function Highlight({ h }: { h: StepHighlight }) {
         </div>
       );
     case "photos":
-      // Photos land in M5; until then the plan's fallback is a large medal-style number.
-      return (
-        <p className="font-display text-[clamp(72px,9vw,120px)] leading-none tracking-[-0.04em] text-accent">
-          {h.fallback}
-        </p>
-      );
+      // Shown on the diagram canvas (PhotoStrip), not in the text column.
+      return null;
   }
 }
 

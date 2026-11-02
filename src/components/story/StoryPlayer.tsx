@@ -252,7 +252,7 @@ export function StoryPlayer({
 
       <div className="grid flex-1 gap-6 px-5 py-6 md:grid-cols-[3fr_2fr] md:gap-10 md:px-8 md:py-8">
         <div
-          className="bg-dot-grid relative h-[45vh] touch-pan-y rounded-[14px] bg-surface-2 md:h-auto md:min-h-[420px]"
+          className="bg-dot-grid relative min-h-[45vh] touch-pan-y rounded-[14px] bg-surface-2 md:h-auto md:min-h-[420px]"
           onPointerDown={onPointerDown}
           onPointerUp={onPointerUp}
           onPointerCancel={() => (swipeStart.current = null)}
