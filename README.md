@@ -17,21 +17,37 @@ pnpm dev          # http://localhost:3000
 
 Other commands:
 
-| Command          | What it does                                 |
-| ---------------- | -------------------------------------------- |
-| `pnpm build`     | Production build. Must pass before any push. |
-| `pnpm lint`      | ESLint.                                      |
-| `pnpm typecheck` | TypeScript in strict mode.                   |
-| `pnpm format`    | Formats everything with Prettier.            |
+| Command              | What it does                                                            |
+| -------------------- | ----------------------------------------------------------------------- |
+| `pnpm build`         | Content check, then the production build. Must pass before any push.    |
+| `pnpm lint`          | ESLint.                                                                 |
+| `pnpm typecheck`     | TypeScript in strict mode.                                              |
+| `pnpm format`        | Formats everything with Prettier.                                       |
+| `pnpm check:content` | Lists every item still waiting on you (see below). Never fails a build. |
 
 ## Edit content
 
 All text on the site lives in typed files under `src/content/`. Components never contain copy, so
 you can change wording without touching any layout code.
 
-- `src/content/site.ts`: name, role, location, availability, email, phone, social links, resume link.
+- `site.ts`: name, role, location, availability, email, phone, social links, resume link.
+- `home.ts`: nav, hero, impact strip, section titles, About, contact, footer, and button labels.
+- `stories.ts`: the eight stories (four work, four projects), their diagrams and step text.
+- `experience.ts`: roles, education, awards.
+- `skills.ts`: skill groups and which stories each skill links to.
+- `types.ts`: the shapes the files above must follow.
 
 Edit a file, save, and the dev server updates instantly. TypeScript will flag a missing or misspelled field.
+
+### Items waiting on you
+
+- **`needsReview: true`** marks drafted wording you haven't approved yet. When you approve or edit it,
+  delete the `needsReview` line (and its `reviewNote`, if there is one).
+- **`TODO(shivam): ...`** marks missing information. A story step whose text is still a TODO is hidden
+  on the site until you replace it.
+
+`pnpm check:content` prints both lists with file locations. It also checks that every diagram step
+only refers to nodes and edges that exist.
 
 ## Update the resume
 
