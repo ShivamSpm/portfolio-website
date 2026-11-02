@@ -18,10 +18,3 @@ export const site = {
   resumeUrl: null as string | null,
   siteUrl: "https://shivam-mahajan.vercel.app",
 } as const;
-
-// Interface labels (screen-reader text, control names).
-export const ui = {
-  skipToContent: "Skip to content",
-  themeToggle: "Switch between light and dark theme",
-  homeLink: "Shivam Mahajan, back to top",
-} as const;

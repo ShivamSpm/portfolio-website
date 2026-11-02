@@ -3,7 +3,8 @@ import { Geist_Mono, Instrument_Sans, Newsreader } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { Providers } from "@/components/Providers";
 import { Nav } from "@/components/nav/Nav";
-import { site, ui } from "@/content/site";
+import { site } from "@/content/site";
+import { ui } from "@/content/home";
 import "@/styles/globals.css";
 
 const newsreader = Newsreader({
