@@ -2,6 +2,7 @@ import { HandFist, Mountain, WavesLadder, type LucideIcon } from "lucide-react";
 import { about, sections } from "@/content/home";
 import { Container } from "@/components/ui/Container";
 import { SectionHeader } from "@/components/ui/SectionHeader";
+import { Reveal } from "@/components/motion/Reveal";
 
 const icons: Record<string, LucideIcon> = {
   boxing: HandFist,
@@ -16,10 +17,13 @@ export function About({ index }: { index: number }) {
       <Container>
         <SectionHeader index={index} id={id} title={title} />
         <div className="grid gap-14 lg:grid-cols-[1.5fr_1fr] lg:gap-20">
-          <p className="max-w-[40ch] font-display text-[clamp(22px,2.3vw,30px)] leading-[1.35] text-ink">
+          <Reveal
+            as="p"
+            className="max-w-[40ch] font-display text-[clamp(22px,2.3vw,30px)] leading-[1.35] text-ink"
+          >
             {about.bio.text}
-          </p>
-          <div>
+          </Reveal>
+          <Reveal delay={0.1}>
             <h3 className="label-mono border-b border-line pb-3 text-muted">
               {about.outsideTitle}
             </h3>
@@ -37,7 +41,7 @@ export function About({ index }: { index: number }) {
                 );
               })}
             </ul>
-          </div>
+          </Reveal>
         </div>
       </Container>
     </section>

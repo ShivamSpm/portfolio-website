@@ -1,7 +1,9 @@
+import { Reveal } from "@/components/motion/Reveal";
+
 // Editorial section opener: a hairline, a mono index and a serif title.
 export function SectionHeader({ index, id, title }: { index: number; id: string; title: string }) {
   return (
-    <div className="mb-10 border-t border-line pt-6 md:mb-14">
+    <Reveal className="mb-10 border-t border-line pt-6 md:mb-14">
       <p className="label-mono text-muted" aria-hidden>
         {String(index).padStart(2, "0")}
       </p>
@@ -11,6 +13,6 @@ export function SectionHeader({ index, id, title }: { index: number; id: string;
       >
         {title}
       </h2>
-    </div>
+    </Reveal>
   );
 }
