@@ -2,7 +2,7 @@
 
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
-import { ui } from "@/content/site";
+import { ui } from "@/content/home";
 
 // Both icons render on the server; CSS picks one from the `.dark` class, so
 // there's no hydration mismatch and no flash before the theme is known.

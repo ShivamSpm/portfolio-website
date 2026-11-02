@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { site, ui } from "@/content/site";
+import { site } from "@/content/site";
+import { ui } from "@/content/home";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 
 // Slim sticky bar. Section links and the mobile menu sheet arrive in M2.
