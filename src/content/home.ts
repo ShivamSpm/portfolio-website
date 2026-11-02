@@ -14,6 +14,7 @@ export const nav = {
 } as const;
 
 export const hero = {
+  status: "Open to work · San Francisco · Remote or onsite",
   // Three lines for the mask reveal. `accent` is rendered in accent italic.
   headline: ["A full-stack engineer", "who builds with AI —", "and ships it."],
   accent: "AI —",
@@ -24,6 +25,8 @@ export const hero = {
   // "How I build" schematic: labels only, no data.
   schematic: {
     caption: "// how I build",
+    ariaLabel:
+      "How I build: an interface layer (React, Next.js, TypeScript) feeds APIs (C#, FastAPI, Node), which feed AI agents (MCP, tools, evals), all on an AWS foundation (Lambda, SNS/SQS, DynamoDB, CloudWatch).",
     layers: [
       { label: "Interface", items: ["React", "Next.js", "TypeScript"] },
       { label: "APIs", items: ["C#", "FastAPI", "Node"] },
@@ -64,7 +67,11 @@ export const about = {
   },
   outsideTitle: "Outside of work",
   // Icon and name only. No invented details.
-  outside: ["Boxing", "Swimming", "Hiking"],
+  outside: [
+    { name: "Boxing", icon: "boxing" },
+    { name: "Swimming", icon: "swimming" },
+    { name: "Hiking", icon: "hiking" },
+  ],
 };
 
 export const contact = {
@@ -96,6 +103,7 @@ export const timeline = {
   highlightsLabel: "Highlights",
   educationTitle: "Education",
   awardsTitle: "Awards and certifications",
+  storiesLabel: "Stories",
 };
 
 export const skillsCopy = {
@@ -129,4 +137,6 @@ export const ui = {
   skipToContent: "Skip to content",
   themeToggle: "Switch between light and dark theme",
   homeLink: "Shivam Mahajan, back to top",
+  newTab: "(opens in a new tab)",
+  primaryNav: "Primary",
 } as const;
