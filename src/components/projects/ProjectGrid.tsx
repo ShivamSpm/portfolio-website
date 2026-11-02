@@ -1,45 +1,30 @@
 import { sections } from "@/content/home";
 import { projectStories } from "@/content/stories";
-import type { DiagramNode, Story } from "@/content/types";
+import type { Story } from "@/content/types";
 import { Badge, Chip } from "@/components/ui/Badge";
 import { Container } from "@/components/ui/Container";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { StoryLink } from "@/components/ui/StoryLink";
 import { Reveal } from "@/components/motion/Reveal";
+import { FlowThumbnail } from "@/components/diagrams/FlowDiagram";
+import { flowLayouts } from "@/components/diagrams/flow/layouts";
 
 const MAX_STACK = 5;
-const THUMB_NODES = 4;
 
-// Walks the story's flow diagram from its first node along the first outgoing edge each time.
-function mainPath(story: Story): DiagramNode[] {
-  if (story.diagram.kind !== "flow") return [];
-  const { nodes, edges } = story.diagram;
-  const path: DiagramNode[] = [];
-  let current: DiagramNode | undefined = nodes[0];
-  while (current && path.length < THUMB_NODES && !path.includes(current)) {
-    path.push(current);
-    const next = edges.find((e) => e.from === current!.id)?.to;
-    current = nodes.find((n) => n.id === next);
-  }
-  return path;
-}
-
-// Static preview of the story's diagram. M5 swaps in the animated version.
+// Animated, text-free miniature of the story's own diagram, as it stands at the Result step.
 function Thumbnail({ story }: { story: Story }) {
-  const path = mainPath(story);
+  const layouts = flowLayouts[story.slug];
+  const show = story.steps.find((s) => s.id === "result")?.diagramState?.show;
   return (
     <div
       aria-hidden
-      className="bg-dot-grid flex min-h-32 flex-wrap items-center gap-x-1.5 gap-y-2 rounded-[10px] bg-surface-2 p-4"
+      className="bg-dot-grid flex h-36 items-center justify-center rounded-[10px] bg-surface-2 p-3"
     >
-      {path.map((node, i) => (
-        <span key={node.id} className="flex items-center gap-1.5">
-          {i > 0 && <span className="font-mono text-[12px] text-accent">→</span>}
-          <span className="rounded-md border border-line bg-surface px-2 py-1 font-mono text-[11px] leading-4 text-muted">
-            {node.label}
-          </span>
-        </span>
-      ))}
+      {story.diagram.kind === "flow" && layouts && show && (
+        <div className="h-full w-full [&>svg]:h-full">
+          <FlowThumbnail spec={story.diagram} layouts={layouts} show={show} />
+        </div>
+      )}
     </div>
   );
 }
