@@ -1,11 +1,17 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { getNextStory, getStory, stories } from "@/content/stories";
 import { StoryDialog, StoryDialogLoading } from "@/components/story/StoryDialog";
 import { StoryPlayer } from "@/components/story/StoryPlayer";
+import { storyMetadata } from "@/lib/storyMetadata";
 
 export function generateStaticParams() {
   return stories.map((s) => ({ slug: s.slug }));
+}
+
+export function generateMetadata({ params }: PageProps<"/stories/[slug]">): Promise<Metadata> {
+  return storyMetadata(params);
 }
 
 async function Story({ params }: { params: PageProps<"/stories/[slug]">["params"] }) {

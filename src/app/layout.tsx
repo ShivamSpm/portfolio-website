@@ -4,7 +4,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { Providers } from "@/components/Providers";
 import { Nav } from "@/components/nav/Nav";
 import { site } from "@/content/site";
-import { ui } from "@/content/home";
+import { seo, ui } from "@/content/home";
 import "@/styles/globals.css";
 
 const newsreader = Newsreader({
@@ -27,10 +27,33 @@ const geistMono = Geist_Mono({
   display: "swap",
 });
 
+const homeTitle = `${site.name} · ${site.role}`;
+
 export const metadata: Metadata = {
   metadataBase: new URL(site.siteUrl),
-  title: `${site.name} · ${site.role}`,
-  description: `${site.name}, ${site.role.toLowerCase()}.`,
+  title: { default: homeTitle, template: `%s · ${site.name}` },
+  description: seo.description,
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    siteName: site.name,
+    title: homeTitle,
+    description: seo.description,
+    url: "/",
+    locale: "en_US",
+  },
+  twitter: { card: "summary_large_image" },
+};
+
+// Structured data for search engines: who the site is about. Only approved profile facts.
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: site.name,
+  jobTitle: site.role,
+  url: site.siteUrl,
+  address: { "@type": "PostalAddress", addressLocality: site.location },
+  sameAs: [site.links.github, site.links.linkedin, site.links.x],
 };
 
 // `modal` is the @modal slot: a story opened from Home renders there as a pop-up
@@ -44,6 +67,13 @@ export default function RootLayout({ children, modal }: LayoutProps<"/">) {
       className={`${newsreader.variable} ${instrumentSans.variable} ${geistMono.variable}`}
     >
       <body className="min-h-dvh">
+        <script
+          type="application/ld+json"
+          // Escape "<" so the JSON can never close the script tag.
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(personJsonLd).replace(/</g, "\\u003c"),
+          }}
+        />
         <Providers>
           <a
             href="#main"
