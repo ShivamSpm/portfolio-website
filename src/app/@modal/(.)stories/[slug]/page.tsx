@@ -1,21 +1,28 @@
 import { notFound } from "next/navigation";
+import { Suspense } from "react";
 import { getNextStory, getStory, stories } from "@/content/stories";
-import { StoryDialog } from "@/components/story/StoryDialog";
+import { StoryDialog, StoryDialogLoading } from "@/components/story/StoryDialog";
 import { StoryPlayer } from "@/components/story/StoryPlayer";
 
 export function generateStaticParams() {
   return stories.map((s) => ({ slug: s.slug }));
 }
 
-// A story opened from Home: same StoryPlayer, inside a pop-up over the page.
-export default async function InterceptedStory({ params }: PageProps<"/stories/[slug]">) {
+async function Story({ params }: { params: PageProps<"/stories/[slug]">["params"] }) {
   const { slug } = await params;
   const story = getStory(slug);
   if (!story) notFound();
+  return <StoryPlayer story={story} nextSlug={getNextStory(story.slug).slug} mode="dialog" />;
+}
 
+// A story opened from Home: same StoryPlayer, inside a pop-up over the page. The
+// dialog opens at once; the slug is read inside Suspense so the shell stays instant.
+export default function InterceptedStory({ params }: PageProps<"/stories/[slug]">) {
   return (
     <StoryDialog>
-      <StoryPlayer story={story} nextSlug={getNextStory(story.slug).slug} mode="dialog" />
+      <Suspense fallback={<StoryDialogLoading />}>
+        <Story params={params} />
+      </Suspense>
     </StoryDialog>
   );
 }

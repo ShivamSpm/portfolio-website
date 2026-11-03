@@ -38,6 +38,8 @@ export function PhotoStrip({ fallback }: { fallback?: string }) {
             src={photo.src}
             alt={photo.alt}
             fill
+            // Mounted only once the Result step is on screen, so load right away.
+            loading="eager"
             sizes="(min-width: 768px) 300px, 45vw"
             className="object-cover"
           />

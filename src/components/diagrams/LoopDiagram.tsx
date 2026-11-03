@@ -13,6 +13,7 @@ import {
   arrowD,
   nodeShape,
   pathD,
+  r2,
   textRows,
   wrap,
   type NodeShape,
@@ -110,7 +111,7 @@ function WideLoop({ spec, moving }: { spec: LoopDiagramSpec; moving: boolean }) 
   const [cx, cy, rx, ry] = [340, 200, 250, 140];
   const n = spec.steps.length;
   const angle = (i: number) => -Math.PI / 2 + (i * 2 * Math.PI) / n;
-  const at = (a: number): Point => [cx + rx * Math.cos(a), cy + ry * Math.sin(a)];
+  const at = (a: number): Point => [r2(cx + rx * Math.cos(a)), r2(cy + ry * Math.sin(a))];
   const shapes = spec.steps.map((label, i) => {
     const [x, y] = at(angle(i));
     return nodeShape(label, undefined, x, y, 128);

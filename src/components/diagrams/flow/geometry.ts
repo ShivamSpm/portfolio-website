@@ -135,6 +135,12 @@ export function pathD(points: Point[]): string {
 }
 
 /** Arrowhead at the last point, pointing along the last segment. */
+/**
+ * Rounds to 0.01. Server and browser trig can differ in the last digits, which
+ * would make server-rendered SVG attributes mismatch on hydration.
+ */
+export const r2 = (n: number) => Math.round(n * 100) / 100;
+
 export function arrowD(points: Point[], size = 6): string {
   const [x1, y1] = points[points.length - 2];
   const [x2, y2] = points[points.length - 1];
@@ -145,7 +151,7 @@ export function arrowD(points: Point[], size = 6): string {
   const by = y2 - uy * size;
   const px = -uy * size * 0.6;
   const py = ux * size * 0.6;
-  return `M${bx + px} ${by + py}L${x2} ${y2}L${bx - px} ${by - py}`;
+  return `M${r2(bx + px)} ${r2(by + py)}L${r2(x2)} ${r2(y2)}L${r2(bx - px)} ${r2(by - py)}`;
 }
 
 /** Midpoint of the longest segment: where edge labels and callouts sit. */
