@@ -1,6 +1,12 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFoundCopy } from "@/content/home";
 import { Container } from "@/components/ui/Container";
+
+export const metadata: Metadata = {
+  title: notFoundCopy.title,
+  robots: { index: false },
+};
 
 export default function NotFound() {
   return (
