@@ -82,6 +82,43 @@
   text-transform: uppercase;
 }
 
+/* Hero load reveal (PLAN.md 2.3). Done in CSS rather than motion/react so it plays at
+   first paint instead of after hydration, which keeps LCP fast on phones. Delays come
+   from --d; reduced motion shows everything in its final state. */
+@keyframes mask-rise {
+  from {
+    transform: translateY(110%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@utility hero-line {
+  animation: mask-rise 800ms cubic-bezier(0.2, 0.7, 0.2, 1) var(--d, 0ms) both;
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+}
+
+@utility hero-fade {
+  animation: fade-rise 600ms cubic-bezier(0.2, 0.7, 0.2, 1) var(--d, 0ms) both;
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+}
+
 /* 24px dot grid; transparent in light mode because --grid-dot is. */
 @utility bg-dot-grid {
   background-image: radial-gradient(var(--grid-dot) 1px, transparent 1px);

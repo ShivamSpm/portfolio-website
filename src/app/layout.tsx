@@ -7,11 +7,13 @@ import { site } from "@/content/site";
 import { seo, ui } from "@/content/home";
 import "@/styles/globals.css";
 
+// Static 400 (regular + italic) instead of the variable font with the optical-size axis:
+// the site only uses weight 400, and the variable files were ~270 KB of render-critical fonts.
 const newsreader = Newsreader({
   variable: "--font-newsreader",
   subsets: ["latin"],
+  weight: "400",
   style: ["normal", "italic"],
-  axes: ["opsz"],
   display: "swap",
 });
 
