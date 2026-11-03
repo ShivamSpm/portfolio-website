@@ -3,9 +3,25 @@
 // choices and can be tuned freely; the wording and facts cannot.
 import type { Photo, Story, StorySlug } from "./types";
 
-// TODO(shivam): add 2–4 hackathon photos to public/images/hackathon/ and list them here
-// with alt text, e.g. { src: "/images/hackathon/stage.jpg", alt: "..." }.
-export const hackathonPhotos: Photo[] = [];
+// Shown on the hackathon story's Result step, in this order.
+export const hackathonPhotos: Photo[] = [
+  {
+    src: "/images/hackathon/trophy.jpg",
+    alt: "The third-place trophy, engraved “Emergences Labs x TinyFish, The AI-Native Talent Hunt Winner”.",
+  },
+  {
+    src: "/images/hackathon/on-stage.jpg",
+    alt: "Shivam on stage holding the third-place trophy, under a slide announcing him as overall 3rd.",
+  },
+  {
+    src: "/images/hackathon/winners.jpg",
+    alt: "The hackathon winners and organizers posing with their trophies.",
+  },
+  {
+    src: "/images/hackathon/group.jpg",
+    alt: "Group photo of the AI-Native Talent Hunt participants in a brick-walled event space.",
+  },
+];
 
 export const stories: Story[] = [
   // ---------------------------------------------------------------- WORK 01
@@ -32,8 +48,6 @@ export const stories: Story[] = [
         {
           id: "eng",
           label: "Engineer",
-          needsReview: true,
-          reviewNote: "Is the final step a human/engineer approval?",
         },
       ],
       edges: [
@@ -250,7 +264,10 @@ export const stories: Story[] = [
         // Hidden on the site until this TODO is replaced; the story shows four steps until then.
         id: "challenge",
         heading: "Challenge",
-        body: "TODO(shivam): what made it hard? (root cause, why it wasn't obvious).",
+        body: "Nothing failed loudly. The lost errors never reached the logs, so there was no trace of them to search and no signal that anything was missing.",
+        needsReview: true,
+        reviewNote:
+          "Placeholder drafted from what's known (errors were silently lost). Replace with the real root cause and what made it hard.",
       },
       {
         id: "approach",
@@ -285,8 +302,6 @@ export const stories: Story[] = [
       "Solved real problems from OpenArt and Dify with a spec-driven workflow using AI coding agents.",
     badges: ["hackathon"],
     stack: ["Codex", "Claude", "Python", "spec-driven development"],
-    needsReview: true,
-    reviewNote: "Confirm the languages used (stack lists Python).",
     diagram: {
       kind: "loop",
       steps: [
@@ -326,10 +341,7 @@ export const stories: Story[] = [
       {
         id: "situation",
         heading: "Situation",
-        body: "At the AI-Native Talent Hunt Hackathon during SF Tech Week, hosted by Emergence Labs × TinyFish, every challenge was a real problem from a real company.",
-        needsReview: true,
-        reviewNote:
-          'Confirm the host spelling: "Emergence Labs" (the LinkedIn post shows "Emergences Labs").',
+        body: "At the AI-Native Talent Hunt Hackathon during SF Tech Week, hosted by Emergences Labs × TinyFish, every challenge was a real problem from a real company.",
       },
       {
         id: "challenge",
@@ -362,10 +374,8 @@ export const stories: Story[] = [
     order: 1,
     title: "Vacate: an AI move-out agent",
     org: "Personal Agents Hackathon",
-    category: "San Francisco · Oct 2026",
-    // TODO(shivam): solo or team, and your role.
-    needsReview: true,
-    reviewNote: "Solo or team? What was your role?",
+    category: "San Francisco · Oct 2026 · Team of 3",
+    role: "Proposed the idea, drove product decisions, built Telegram selling and negotiation",
     pitch:
       "A personal agent that handles a renter's move-out: lease, listings, buyer negotiation, with human approval on every outbound action.",
     badges: ["hackathon", "live"],
@@ -456,7 +466,9 @@ export const stories: Story[] = [
       {
         id: "approach",
         heading: "What I did",
-        body: "Built Vacate: the lease becomes a dated checklist with page references, a photo becomes a draft listing, and the agent negotiates with buyers in parallel. Every outbound action becomes a review card whose approval is tied to a hash of the exact content. Policy checks run in code, not in the prompt.",
+        body: "Our team of three built Vacate: the lease becomes a dated checklist with page references, a photo becomes a draft listing, and the agent negotiates with buyers in parallel. Every outbound action becomes a review card whose approval is tied to a hash of the exact content. Policy checks run in code, not in the prompt. My part: I proposed the idea, drove the product decisions, and built selling on Telegram with the agent's buyer negotiation, then explored extending it to Facebook Marketplace.",
+        needsReview: true,
+        reviewNote: "Rewritten to credit the team of three and add your part.",
         diagramState: {
           show: [
             "lease",
@@ -951,15 +963,14 @@ export const stories: Story[] = [
     links: [{ label: "Code", href: "https://github.com/ShivamSpm/AI-Incident-Investigator" }],
     diagram: {
       kind: "flow",
-      // "planned" follows the "Next:" list in the What I'm building step.
+      // Everything in this diagram is planned; the footnote says what's built today.
       nodes: [
         { id: "console", label: "React console", status: "planned" },
         {
           id: "api",
           label: "FastAPI",
           sublabel: "incident state, evidence, approval checks",
-          needsReview: true,
-          reviewNote: "Is the FastAPI layer built today, or planned?",
+          status: "planned",
         },
         { id: "hermes", label: "Hermes agent", sublabel: "+ versioned skills", status: "planned" },
         { id: "mcp", label: "Typed MCP tools", status: "planned" },
@@ -968,8 +979,7 @@ export const stories: Story[] = [
           id: "remediation",
           label: "Remediation",
           sublabel: "allowlisted actions only",
-          needsReview: true,
-          reviewNote: "Is remediation built today, or planned?",
+          status: "planned",
         },
       ],
       edges: [
@@ -979,6 +989,8 @@ export const stories: Story[] = [
         { id: "mcp-otel", from: "mcp", to: "otel" },
         { id: "api-remediation", from: "api", to: "remediation", label: "approval gate" },
       ],
+      footnote:
+        "Planned architecture. Built so far: a deterministic baseline with read-only tools, evidence-linked JSON diagnoses, a versioned investigation skill, and regression evals.",
       mobile: "vertical",
     },
     steps: [
