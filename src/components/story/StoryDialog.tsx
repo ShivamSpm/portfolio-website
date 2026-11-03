@@ -4,6 +4,7 @@ import * as Dialog from "@radix-ui/react-dialog";
 import * as m from "motion/react-m";
 import { useRouter } from "next/navigation";
 import { useLayoutEffect, useRef } from "react";
+import { storyUi } from "@/content/home";
 import { ease, instant } from "@/lib/motion";
 import { useReducedMotion } from "@/lib/useReducedMotion";
 
@@ -64,5 +65,14 @@ export function StoryDialog({ children }: { children: React.ReactNode }) {
         </Dialog.Overlay>
       </Dialog.Portal>
     </Dialog.Root>
+  );
+}
+
+/** Shown for a moment while the story streams in; Radix requires a title in every dialog. */
+export function StoryDialogLoading() {
+  return (
+    <div className="min-h-[60vh]">
+      <Dialog.Title className="sr-only">{storyUi.loadingLabel}</Dialog.Title>
+    </div>
   );
 }

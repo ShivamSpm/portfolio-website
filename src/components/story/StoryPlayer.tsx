@@ -219,6 +219,12 @@ export function StoryPlayer({
           ) : (
             <h1 className={titleClass}>{title}</h1>
           )}
+          {story.role && (
+            <p className="mt-3 max-w-[70ch] text-[15px] leading-snug text-muted">
+              <span className="label-mono mr-2 text-ink">{storyUi.roleLabel}</span>
+              {story.role}
+            </p>
+          )}
           {(story.badges || story.links) && (
             <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2">
               {story.badges?.map((b) => (
@@ -252,7 +258,7 @@ export function StoryPlayer({
 
       <div className="grid flex-1 gap-6 px-5 py-6 md:grid-cols-[3fr_2fr] md:gap-10 md:px-8 md:py-8">
         <div
-          className="bg-dot-grid relative h-[45vh] touch-pan-y rounded-[14px] bg-surface-2 md:h-auto md:min-h-[420px]"
+          className="bg-dot-grid relative min-h-[45vh] touch-pan-y rounded-[14px] bg-surface-2 md:h-auto md:min-h-[420px]"
           onPointerDown={onPointerDown}
           onPointerUp={onPointerUp}
           onPointerCancel={() => (swipeStart.current = null)}

@@ -100,6 +100,8 @@ export interface LossDiagramSpec {
   kind: "loss";
   before: { source: string; sink: string };
   after: { stages: string[] };
+  /** Screen-reader summary of the whole diagram; the step text carries the rest. */
+  alt: string;
 }
 
 export interface LoopDiagramSpec {
@@ -107,6 +109,8 @@ export interface LoopDiagramSpec {
   steps: string[];
   loopBackLabel: string;
   panels: { title: string; steps: string[] }[];
+  /** Screen-reader summary of the whole diagram; the step text carries the rest. */
+  alt: string;
 }
 
 export type DiagramSpec =
