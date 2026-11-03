@@ -73,6 +73,8 @@ export function FlowChart({
   const reduced = useReducedMotion();
   const { nodes, groups, edges, boxOf } = useScene(spec, layout);
   const full = variant === "full";
+  // When everything is planned, the footnote says so once instead of a tag on every box.
+  const tagPlanned = !spec.nodes.every((n) => n.status === "planned");
 
   const shown = (id: string) => state.show.includes(id);
   const opacityOf = (id: string) => (shown(id) ? (state.dim?.includes(id) ? DIM : 1) : 0);
@@ -207,7 +209,7 @@ export function FlowChart({
                   {row.text}
                 </text>
               ))}
-            {full && planned && (
+            {full && planned && tagPlanned && (
               <text
                 x={s.x1}
                 y={s.y0 - 6}

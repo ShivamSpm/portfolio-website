@@ -121,6 +121,8 @@ export const storyUi = {
   } satisfies Record<StepId, string>,
   storyLabel: "Story",
   projectLabel: "Project",
+  roleLabel: "My role",
+  loadingLabel: "Loading story",
   chaptersLabel: "Chapters",
   stepsLabel: "Story steps",
   diagramStepLabel: "Current step",

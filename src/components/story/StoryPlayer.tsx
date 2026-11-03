@@ -219,6 +219,12 @@ export function StoryPlayer({
           ) : (
             <h1 className={titleClass}>{title}</h1>
           )}
+          {story.role && (
+            <p className="mt-3 max-w-[70ch] text-[15px] leading-snug text-muted">
+              <span className="label-mono mr-2 text-ink">{storyUi.roleLabel}</span>
+              {story.role}
+            </p>
+          )}
           {(story.badges || story.links) && (
             <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2">
               {story.badges?.map((b) => (
