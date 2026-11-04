@@ -18,5 +18,5 @@ export const site = {
   resumeUrl:
     "https://drive.google.com/file/d/1ZjbjVVG-HtXsuGop3M_3Uz3wTUM6K-o7/view?usp=sharing" as
       string | null,
-  siteUrl: "https://shivam-mahajan.vercel.app",
+  siteUrl: "https://shivam-mahajan-portfolio.vercel.app",
 } as const;

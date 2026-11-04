@@ -1,7 +1,7 @@
 # CLAUDE.md
 
 Personal portfolio for Shivam Mahajan, a full-stack engineer who builds with AI.
-Live at https://shivam-mahajan.vercel.app (Vercel Hobby, auto-deploys from `main`).
+Live at https://shivam-mahajan-portfolio.vercel.app (Vercel Hobby, auto-deploys from `main`).
 
 ## Start here
 - Read `docs/PLAN.md` fully before doing any work. It is the source of truth for design, content, architecture and milestones.
