@@ -3,7 +3,7 @@
 > Hand this file to Claude Code. Put it in the repo as `docs/PLAN.md`, and add a short `CLAUDE.md` at the root that says: "Read docs/PLAN.md before doing anything. Follow its milestones in order and stop at every CHECKPOINT for Shivam's review."
 
 - **Repo:** https://github.com/ShivamSpm/portfolio-website (public)
-- **Live URL:** https://shivam-mahajan.vercel.app (Vercel Hobby plan, free)
+- **Live URL:** https://shivam-mahajan-portfolio.vercel.app (Vercel Hobby plan, free; `shivam-mahajan` was taken)
 - **Owner:** Shivam Mahajan, spmshivam@gmail.com
 
 ---
@@ -198,7 +198,7 @@ links: {
   repo: "https://github.com/ShivamSpm/portfolio-website",
 }
 resumeUrl: "TODO(shivam): Google Drive share link"   // see Section 8
-siteUrl: "https://shivam-mahajan.vercel.app"
+siteUrl: "https://shivam-mahajan-portfolio.vercel.app"
 ```
 
 ### 6.2 Hero copy

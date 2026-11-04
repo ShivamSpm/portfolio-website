@@ -1,7 +1,7 @@
 # Shivam Mahajan: portfolio
 
 Personal portfolio for a full-stack engineer who builds with AI.
-Live at https://shivam-mahajan.vercel.app.
+Live at https://shivam-mahajan-portfolio.vercel.app.
 
 Built with Next.js (App Router), TypeScript, Tailwind CSS v4 and Motion. Fully static, deployed on Vercel.
 The full design and content plan is in [`docs/PLAN.md`](docs/PLAN.md).
@@ -76,7 +76,7 @@ only that the link was opened. Stories opened from there show up as `/stories/<s
 
 1. Sign in at vercel.com with GitHub, then **Add New → Project → Import**
    `ShivamSpm/portfolio-website`.
-2. Name the project `shivam-mahajan` (for the address `shivam-mahajan.vercel.app`), keep the
+2. Pick the project's address (this site uses `shivam-mahajan-portfolio.vercel.app`), keep the
    Next.js preset, and click **Deploy**.
 3. Go to the project's **Analytics** tab and enable **Web Analytics**.
 4. From then on, every push to `main` redeploys, and every pull request gets a preview URL.
