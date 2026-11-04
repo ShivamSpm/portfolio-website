@@ -1,3 +1,6 @@
 allowBuilds:
+  # esbuild (via tsx) only verifies its binary at install time; the platform binary
+  # package installs regardless. Listed so fresh installs (Vercel) don't fail on it.
+  esbuild: false
   sharp: false
   unrs-resolver: false
