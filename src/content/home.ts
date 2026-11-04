@@ -139,6 +139,20 @@ export const storyUi = {
   plannedLabel: "planned",
 };
 
+// Search and link-preview text.
+export const seo = {
+  description:
+    "Shivam Mahajan is a full-stack engineer who builds with AI: React and TypeScript products, AWS backends, and AI agents with tracing and evals.",
+  ogAlt: "Shivam Mahajan, a full-stack engineer who builds with AI",
+};
+
+export const notFoundCopy = {
+  label: "404",
+  title: "This page doesn't exist.",
+  body: "The link may be old or mistyped. The stories are all on the home page.",
+  homeLink: "Back to home",
+};
+
 // Screen-reader text and control names.
 export const ui = {
   skipToContent: "Skip to content",

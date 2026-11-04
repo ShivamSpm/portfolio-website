@@ -14,7 +14,9 @@ export const site = {
     x: "https://x.com/Shivam_Spm",
     repo: "https://github.com/ShivamSpm/portfolio-website",
   },
-  // TODO(shivam): Google Drive share link (see README). While null, the Resume button is hidden.
-  resumeUrl: null as string | null,
+  // Google Drive share link. Update the file in Drive (Manage versions) to keep this link; see README.
+  resumeUrl:
+    "https://drive.google.com/file/d/1ZjbjVVG-HtXsuGop3M_3Uz3wTUM6K-o7/view?usp=sharing" as
+      string | null,
   siteUrl: "https://shivam-mahajan.vercel.app",
 } as const;

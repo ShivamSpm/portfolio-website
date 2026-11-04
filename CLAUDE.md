@@ -23,6 +23,7 @@ Live at https://shivam-mahajan.vercel.app (Vercel Hobby, auto-deploys from `main
 ## Conventions
 - Next.js App Router, TypeScript strict, Tailwind v4 using the design tokens in `src/styles/globals.css`. Never hard-code hex colors in components.
 - Animation uses `motion/react` only. Animate only transform, opacity, clip-path and SVG pathLength. Every animation must respect `prefers-reduced-motion`.
+- Exception: the hero's load reveal (headline, status line, sub-copy, CTAs) uses the CSS keyframes in `globals.css` so it plays at first paint instead of after hydration. Keep it in CSS; moving it back to motion/react pushes mobile LCP past 4s.
 - Use one accent color, and no gradients, glows or emoji in the UI.
 - Accessibility: real buttons and links, visible focus, AA contrast in both themes, `role="img"` with `aria-label` on diagrams.
 - Keep the site fully static (SSG). No database, CMS or server runtime.

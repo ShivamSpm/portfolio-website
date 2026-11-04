@@ -62,6 +62,28 @@ The Resume button links to a Google Drive file, so the PDF can change without a 
 **To update it later without changing the link:** in Drive, right-click the file → **File information →
 Manage versions → Upload new version**. The link stays the same, so the website never needs to change.
 
+## Per-company tracking links
+
+Every `/for/<company>` URL (for example `/for/stripe`) shows the normal home page. Nothing on
+the page mentions the company, it's hidden from search engines, and one static page serves
+every name, so there's nothing to set up per link.
+
+When you apply somewhere, send that company its own link. In Vercel Analytics, a view of
+`/for/stripe` means someone opened the link you sent Stripe. Vercel can't tell you who it was,
+only that the link was opened. Stories opened from there show up as `/stories/<slug>` views.
+
+## Deploy on Vercel (one time)
+
+1. Sign in at vercel.com with GitHub, then **Add New → Project → Import**
+   `ShivamSpm/portfolio-website`.
+2. Name the project `shivam-mahajan` (for the address `shivam-mahajan.vercel.app`), keep the
+   Next.js preset, and click **Deploy**.
+3. Go to the project's **Analytics** tab and enable **Web Analytics**.
+4. From then on, every push to `main` redeploys, and every pull request gets a preview URL.
+
+If the final address is different, update `siteUrl` in `src/content/site.ts`: canonical
+links, the sitemap and the share images all use it.
+
 ## Theme and design tokens
 
 Colors, fonts and the type scale are CSS variables in `src/styles/globals.css`, exposed to Tailwind

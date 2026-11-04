@@ -470,7 +470,7 @@ scripts/check-content.ts     lists needsReview and TODO(shivam) items
 
 ## 10. Quality bar (acceptance criteria)
 
-- **Performance:** Lighthouse mobile scores of 95 or higher for Performance, Accessibility, Best Practices, and SEO. LCP under 2.0s, CLS under 0.05, INP under 200ms. Home JavaScript should be about 170 KB gzipped at most.
+- **Performance:** Lighthouse mobile scores of 95 or higher for Performance, Accessibility, Best Practices, and SEO. LCP under 2.0s, CLS under 0.05, INP under 200ms. Home JavaScript should be about 240 KB gzipped at most (raised from 170 KB in M6: React and Next.js alone are about 150 KB).
 - **Responsive:** looks right at 360, 390, 768, 1024, 1280, and 1440px, with no horizontal scroll at any width.
 - **Accessibility:**
   - Full keyboard support, visible focus rings, and correct pop-up focus handling.

@@ -17,12 +17,20 @@ export function riseTransition(delay = 0): Transition {
   return { duration: 0.6, ease, delay };
 }
 
-/** Hero timing: headline lines first (120ms apart), then everything else. */
+/**
+ * Hero timing in seconds: headline lines first (120ms apart), then everything else.
+ * The headline, status, sub-copy and CTAs play as CSS (hero-line / hero-fade in
+ * globals.css); the schematic uses motion/react.
+ */
 export const heroTiming = {
   lineStagger: 0.12,
-  lineDuration: 0.8,
-  status: 0.45,
-  subcopy: 0.55,
-  ctas: 0.65,
-  schematic: 0.75,
+  status: 0.35,
+  subcopy: 0.42,
+  ctas: 0.5,
+  schematic: 0.6,
 };
+
+/** CSS custom property carrying a hero delay, for the hero-line / hero-fade utilities. */
+export function heroDelay(seconds: number): React.CSSProperties {
+  return { "--d": `${Math.round(seconds * 1000)}ms` } as React.CSSProperties;
+}

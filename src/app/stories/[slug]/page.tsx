@@ -3,21 +3,17 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { storyUi } from "@/content/home";
-import { site } from "@/content/site";
 import { getNextStory, getStory, stories } from "@/content/stories";
 import { Container } from "@/components/ui/Container";
 import { StoryPlayer } from "@/components/story/StoryPlayer";
+import { storyMetadata } from "@/lib/storyMetadata";
 
 export function generateStaticParams() {
   return stories.map((s) => ({ slug: s.slug }));
 }
 
-export async function generateMetadata({
-  params,
-}: PageProps<"/stories/[slug]">): Promise<Metadata> {
-  const story = getStory((await params).slug);
-  if (!story) return {};
-  return { title: `${story.title} · ${site.name}`, description: story.pitch };
+export function generateMetadata({ params }: PageProps<"/stories/[slug]">): Promise<Metadata> {
+  return storyMetadata(params);
 }
 
 const linkClass = "label-mono inline-flex min-h-11 items-center text-muted hover:text-ink";
